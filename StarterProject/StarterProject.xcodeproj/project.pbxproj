@@ -24,16 +24,15 @@
 		6A4F360B1F2AF21000F1FCC7 /* headViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4F360A1F2AF21000F1FCC7 /* headViewController.swift */; };
 		6A52F4C51F317B4A00C43E8B /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = 6A52F4C41F317B4A00C43E8B /* Sounds */; };
 		6A52F4C71F317B6300C43E8B /* PlaySoundsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A52F4C61F317B6300C43E8B /* PlaySoundsController.swift */; };
+		6AC20611206387F90033A71E /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AC20610206387F90033A71E /* libicucore.tbd */; };
+		C095D8472109508200575419 /* HeadAndSoundController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C095D8462109508200575419 /* HeadAndSoundController.swift */; };
 		E829A8A800A7AFC5A4C5DA7A /* Pods_Starter_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C3D37560DD979815A53DF1B /* Pods_Starter_iOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0C3D37560DD979815A53DF1B /* Pods_Starter_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Starter_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1D38549A4A5D5B53A9AC0EDE /* Pods-Starter-macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Starter-macOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Starter-macOS/Pods-Starter-macOS.debug.xcconfig"; sourceTree = "<group>"; };
 		2573A1969C83186B79E292E1 /* Pods-Starter-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Starter-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Starter-iOS/Pods-Starter-iOS.release.xcconfig"; sourceTree = "<group>"; };
-		263A788447671602C2AE4FFF /* Pods-Starter-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Starter-tvOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Starter-tvOS/Pods-Starter-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		2C1A4E13D173813A39F97132 /* Pods-Starter-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Starter-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Starter-iOS/Pods-Starter-iOS.debug.xcconfig"; sourceTree = "<group>"; };
-		402973271DB81F5A00EC8C32 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		402973281DB81F5A00EC8C32 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4029732D1DB81F5B00EC8C32 /* StarterProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarterProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		402973381DB81F5B00EC8C32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -45,12 +44,12 @@
 		402973801DB839EA00EC8C32 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		402973811DB839EA00EC8C32 /* DeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceViewController.swift; sourceTree = "<group>"; };
 		402973821DB839EA00EC8C32 /* MainTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
-		5831B849867AF94CA117AB75 /* Pods-Starter-macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Starter-macOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Starter-macOS/Pods-Starter-macOS.release.xcconfig"; sourceTree = "<group>"; };
 		6A4F36081F2AF1C300F1FCC7 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		6A4F360A1F2AF21000F1FCC7 /* headViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = headViewController.swift; sourceTree = "<group>"; };
 		6A52F4C41F317B4A00C43E8B /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
 		6A52F4C61F317B6300C43E8B /* PlaySoundsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaySoundsController.swift; sourceTree = "<group>"; };
-		BC9E019C266AD9823B5E877D /* Pods-Starter-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Starter-tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Starter-tvOS/Pods-Starter-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		6AC20610206387F90033A71E /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.2.sdk/usr/lib/libicucore.tbd; sourceTree = DEVELOPER_DIR; };
+		C095D8462109508200575419 /* HeadAndSoundController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadAndSoundController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AC20611206387F90033A71E /* libicucore.tbd in Frameworks */,
 				E829A8A800A7AFC5A4C5DA7A /* Pods_Starter_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -82,6 +82,7 @@
 		1A2EFF41F64FC47F9E047F00 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6AC20610206387F90033A71E /* libicucore.tbd */,
 				0C3D37560DD979815A53DF1B /* Pods_Starter_iOS.framework */,
 			);
 			name = Frameworks;
@@ -90,11 +91,11 @@
 		4029731F1DB81F5A00EC8C32 = {
 			isa = PBXGroup;
 			children = (
+				1A2EFF41F64FC47F9E047F00 /* Frameworks */,
 				402973241DB81F5A00EC8C32 /* Shared */,
 				4029732F1DB81F5B00EC8C32 /* iOS */,
 				4029732E1DB81F5B00EC8C32 /* Products */,
 				9F285135BBB620A7FA0A9B0D /* Pods */,
-				1A2EFF41F64FC47F9E047F00 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -104,13 +105,13 @@
 				6A52F4C41F317B4A00C43E8B /* Sounds */,
 				6A4F36081F2AF1C300F1FCC7 /* art.scnassets */,
 				402973801DB839EA00EC8C32 /* AppDelegate.swift */,
+				6A52F4C61F317B6300C43E8B /* PlaySoundsController.swift */,
 				402973811DB839EA00EC8C32 /* DeviceViewController.swift */,
 				402973821DB839EA00EC8C32 /* MainTableViewController.swift */,
-				6A52F4C61F317B6300C43E8B /* PlaySoundsController.swift */,
-				402973271DB81F5A00EC8C32 /* GameScene.swift */,
 				4029737D1DB839AF00EC8C32 /* ScanTableViewController.swift */,
 				6A4F360A1F2AF21000F1FCC7 /* headViewController.swift */,
 				402973281DB81F5A00EC8C32 /* Assets.xcassets */,
+				C095D8462109508200575419 /* HeadAndSoundController.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -140,10 +141,6 @@
 			children = (
 				2C1A4E13D173813A39F97132 /* Pods-Starter-iOS.debug.xcconfig */,
 				2573A1969C83186B79E292E1 /* Pods-Starter-iOS.release.xcconfig */,
-				1D38549A4A5D5B53A9AC0EDE /* Pods-Starter-macOS.debug.xcconfig */,
-				5831B849867AF94CA117AB75 /* Pods-Starter-macOS.release.xcconfig */,
-				263A788447671602C2AE4FFF /* Pods-Starter-tvOS.debug.xcconfig */,
-				BC9E019C266AD9823B5E877D /* Pods-Starter-tvOS.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -218,7 +215,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "MBIENTLAB, INC";
 				TargetAttributes = {
 					4029732C1DB81F5A00EC8C32 = {
@@ -432,6 +429,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C095D8472109508200575419 /* HeadAndSoundController.swift in Sources */,
 				402973851DB839EA00EC8C32 /* MainTableViewController.swift in Sources */,
 				6A4F360B1F2AF21000F1FCC7 /* headViewController.swift in Sources */,
 				402973831DB839EA00EC8C32 /* AppDelegate.swift in Sources */,
@@ -482,15 +480,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -518,6 +524,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0.1;
+				USER_HEADER_SEARCH_PATHS = "/Users/martinjaroszewicz/Dropbox/COSMOS\\ 17/COSMOS\\ Examples\\ Swift/MetaWear-SDK-iOS-macOS-tvOS-master/StarterProject/Shared/**";
 			};
 			name = Debug;
 		};
@@ -530,15 +537,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -558,6 +573,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0.1;
+				USER_HEADER_SEARCH_PATHS = "/Users/martinjaroszewicz/Dropbox/COSMOS\\ 17/COSMOS\\ Examples\\ Swift/MetaWear-SDK-iOS-macOS-tvOS-master/StarterProject/Shared/**";
 			};
 			name = Release;
 		};
@@ -574,7 +590,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mbientlab.StarterProject;
 				PRODUCT_NAME = StarterProject;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "/Users/martinjaroszewicz/Dropbox/COSMOS\\ 17/COSMOS\\ Examples\\ Swift/MetaWear-SDK-iOS-macOS-tvOS-master/StarterProject/Shared/** \"$(SRCROOT)/MetatoneOSC-master\"";
 			};
 			name = Debug;
 		};
@@ -591,14 +609,15 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mbientlab.StarterProject;
 				PRODUCT_NAME = StarterProject;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "/Users/martinjaroszewicz/Dropbox/COSMOS\\ 17/COSMOS\\ Examples\\ Swift/MetaWear-SDK-iOS-macOS-tvOS-master/StarterProject/Shared/** \"$(SRCROOT)/MetatoneOSC-master\"";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		402973691DB81F5B00EC8C32 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 263A788447671602C2AE4FFF /* Pods-Starter-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "tvOS App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "tvOS LaunchImage";
@@ -614,7 +633,6 @@
 		};
 		4029736A1DB81F5B00EC8C32 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BC9E019C266AD9823B5E877D /* Pods-Starter-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "tvOS App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "tvOS LaunchImage";
@@ -631,7 +649,6 @@
 		};
 		4029736C1DB81F5B00EC8C32 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1D38549A4A5D5B53A9AC0EDE /* Pods-Starter-macOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "-";
@@ -648,7 +665,6 @@
 		};
 		4029736D1DB81F5B00EC8C32 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5831B849867AF94CA117AB75 /* Pods-Starter-macOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "-";

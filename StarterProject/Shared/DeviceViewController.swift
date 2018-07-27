@@ -9,11 +9,26 @@
 import UIKit
 import MetaWear
 import AVFoundation
-
-class DeviceViewController: UIViewController {
+import MapKit
+protocol SendXYZValues : class {
+    func sendXYZHeadPosition(value1: Double, value2: Double, value3: Double)
+}
+class DeviceViewController: UIViewController, UISearchBarDelegate{
+    /**
+    var transportX : Double = 0.0
+    var transportY : Double = 0.0
+    var transportZ : Double = 0.0
+    
+    func sendXYZHeadPosition(value: Double, value1: Double, value2: Double){
+        
+    }*/
+    
+    weak var valuesDelegate : SendXYZValues?
     
     @IBOutlet weak var deviceStatus: UILabel!
-    @IBOutlet weak var headView: headViewController!
+    @IBOutlet weak var nextButton: UIButton!
+    
+    @IBOutlet weak var myMapView: MKMapView!
     
     let PI : Double = 3.14159265359
     
@@ -22,13 +37,6 @@ class DeviceViewController: UIViewController {
     var startTime : TimeInterval?
     
     var playSoundsController : PlaySoundsController!
-    var environment : Environment!
-    
-    struct Environment {
-        var name: String
-        var indexStart: Int
-        var numberOfSounds: Int
-    }
     
     var seagullX : Float = -50
     var seagullY : Float = 20
@@ -42,12 +50,89 @@ class DeviceViewController: UIViewController {
             self.device.led?.flashColorAsync(UIColor.green, withIntensity: 1.0, numberOfFlashes: 3)
             NSLog("We are connected")
         }
-        // load Forest Environemnt into struc
-        environment = Environment(name: "Forest", indexStart: 0, numberOfSounds: 4 )
-        loadSounds(env: environment)
+       
+        var sensorTimer = Timer()
+         let aSelector : Selector = #selector(self.getDataFromSensor)
+        sensorTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: aSelector,     userInfo: nil, repeats: false)
         
+        //loadSounds()
+        //loadSounds()
+       
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let headAndSoundController = segue.destination as? HeadAndSoundController {
+            print("Preparing for HeadAndSoundController")
+            valuesDelegate = headAndSoundController
+        }
+    }
+    
+    func getDataFromSensor(){
+        device.sensorFusion?.eulerAngle.startNotificationsAsync { (obj, error) in
+            self.getFusionValues(obj: obj!)
+            }.success { result in
+                print("Successfully subscribed")
+            }.failure { error in
+                print("Error on subscribe: \(error)")
+        }
+    }
+    @IBAction func search(_ sender: UIBarButtonItem) {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.delegate = self
+        present(searchController, animated: true, completion: nil)
+    }
+    
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.startAnimating()
+        
+        self.view.addSubview(activityIndicator)
+        
+        searchBar.resignFirstResponder()
+        
+        dismiss(animated: true, completion: nil)
+        
+        let searchRequest = MKLocalSearchRequest()
+        searchRequest.naturalLanguageQuery = searchBar.text
+        
+        let activeSearch = MKLocalSearch(request: searchRequest)
+        
+        activeSearch.start{(response, Error) in
+            
+            activityIndicator.stopAnimating()
+            UIApplication.shared.endIgnoringInteractionEvents()
+            if response == nil{
+                print("ERROR")
+            }
+            else{
+                let annotations = self.myMapView.annotations
+                self.myMapView.removeAnnotations(annotations)
+                
+                let latitude = response?.boundingRegion.center.latitude
+                let longitude = response?.boundingRegion.center.longitude
+                
+                let annotation = MKPointAnnotation()
+                //SEARCHBAR.TEXT IS THE STRING THE USER ENTERS
+                annotation.title = searchBar.text
+                annotation.coordinate = CLLocationCoordinate2DMake(latitude!, longitude!)
+                self.myMapView.addAnnotation(annotation)
+                
+                let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude!, longitude!)
+                let span = MKCoordinateSpanMake(0.1, 0.1)
+                let region = MKCoordinateRegionMake(coordinate, span)
+                self.myMapView.setRegion(region, animated: true)
+               // self.labeler.text = annotation.title! + ""
+               // self.publicText = annotation.title!
+            }
+        }
+    }
+    /**
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
@@ -55,7 +140,7 @@ class DeviceViewController: UIViewController {
         device.led?.flashColorAsync(UIColor.red, withIntensity: 1.0, numberOfFlashes: 3)
         device.disconnectAsync()
     }
-    
+    */
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         OperationQueue.main.addOperation {
             switch (self.device.state) {
@@ -74,6 +159,7 @@ class DeviceViewController: UIViewController {
         }
     }
     
+    
     func getFusionValues(obj: MBLEulerAngleData){
         
         let xS =  String(format: "%.02f", (obj.p))
@@ -83,11 +169,17 @@ class DeviceViewController: UIViewController {
         let x = radians((obj.p * -1) + 90)
         let y = radians(abs(365 - obj.y))
         let z = radians(obj.r)
-        headView.setPointerPosition(w: 0.0, x : x, y: y, z: z)
-        playSoundsController.updateAngularOrientation(abs(Float(365 - obj.y)))
-
+        
+        //headView.setPointerPosition(w: 0.0, x : x, y: y, z: z)
+        //playSoundsController.updateAngularOrientation(abs(Float(365 - obj.y)))
+        //print(x)
+       // print(y)
+       // print(z)
+        self.valuesDelegate?.sendXYZHeadPosition(value1: x, value2: y, value3: z)
+        
+        // Send OSC here
     }
- 
+    
     func radians(_ degree: Double) -> Double {
         return ( PI/180 * degree)
     }
@@ -95,7 +187,7 @@ class DeviceViewController: UIViewController {
         return (180 * radian / PI)
     }
     
-    
+    /**
     @IBAction func startPressed(sender: AnyObject) {
         
         device.sensorFusion?.eulerAngle.startNotificationsAsync { (obj, error) in
@@ -113,13 +205,11 @@ class DeviceViewController: UIViewController {
             }.failure { error in
                 print("Error on unsubscribe: \(error)")
         }
-    }
-    
-    func loadSounds(env: Environment){
+    }*/
+    /**
+    func loadSounds(){
         var soundArray : [String] = []
-        let start = env.indexStart
-        let num = env.indexStart + env.numberOfSounds - 1
-        for index in start...num{
+        for index in 0...3{
             soundArray.append(String(index) + ".wav")
         }
         playSoundsController = PlaySoundsController(file: soundArray)
@@ -137,7 +227,8 @@ class DeviceViewController: UIViewController {
         }
     
     }
-    
+    */
+    /**
     @IBAction func seagulls(_ sender: UIButton) {
         timer = Timer()
         //startTime = TimeInterval()
@@ -149,7 +240,7 @@ class DeviceViewController: UIViewController {
     }
     
     func moveSoundsLinearPath(){
-        print(seagullX)
+        
         playSoundsController.updatePosition(index: 3, position: AVAudio3DPoint(x: seagullX, y: seagullY, z: seagullZ))
         seagullX += 0.1
         if seagullX > 100.0 {
@@ -158,11 +249,11 @@ class DeviceViewController: UIViewController {
             seagullX = -100
         }
     }
-    
+ 
     func stopTimer() {
         if timer != nil {
             timer?.invalidate()
             timer = nil
         }
-    }
+    }*/
 }

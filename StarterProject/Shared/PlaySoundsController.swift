@@ -45,7 +45,7 @@ class PlaySoundsController {
             fileExtensionCount = 0
             fileExtension = ""
             fileName =  ""
-            fileExtensionCount = index.characters.count - 3
+            fileExtensionCount = index.count - 3
             fileExtension = (fileExtension.padding(toLength: 3, withPad: index, startingAt: fileExtensionCount))
             fileName = (fileName.padding(toLength: (fileExtensionCount-1), withPad: index, startingAt: 0))
             print("\(fileName).\(fileExtension)")
@@ -81,7 +81,7 @@ class PlaySoundsController {
             player[counter].scheduleBuffer(buffer, at: nil, options: loop, completionHandler: nil)
             counter += 1
         }
-        print("Habemus Players")
+        print("Players OK")
         initEngine()
     }
     

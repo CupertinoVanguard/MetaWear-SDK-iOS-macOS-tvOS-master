@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import MetaWear
+import MetaWear 
 
 class MainTableViewController: UITableViewController, ScanTableViewControllerDelegate {
     var devices: [MBLMetaWear]?
@@ -50,7 +50,7 @@ class MainTableViewController: UITableViewController, ScanTableViewControllerDel
             cell = tableView.dequeueReusableCell(withIdentifier: "MetaWearCell", for: indexPath)
             if let cur = devices?[indexPath.row] {
                 let name = cell.viewWithTag(1) as! UILabel
-                name.text = cur.name
+                name.text = "HeadTracker" //cur.name
                 
                 let uuid = cell.viewWithTag(2) as! UILabel
                 uuid.text = cur.identifier.uuidString

@@ -12,7 +12,7 @@ class headViewController: SCNView {
     
     var pointerNode: SCNNode!
     var pointerBox: SCNSphere!
-    var ship : SCNNode!
+    var head : SCNNode!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -23,8 +23,6 @@ class headViewController: SCNView {
         super.init(frame: frame)
         self.setupScene()
     }
-    
-    
     
     fileprivate func setupScene() {
         
@@ -46,21 +44,21 @@ class headViewController: SCNView {
          lightNode.position = SCNVector3(x: 0, y: 10, z: 10)
          scene.rootNode.addChildNode(lightNode)
          
-         // create and add an ambient light to the scene
+          //create and add an ambient light to the scene
          let ambientLightNode = SCNNode()
          ambientLightNode.light = SCNLight()
          ambientLightNode.light!.type = .ambient
          ambientLightNode.light!.color = UIColor.darkGray
          scene.rootNode.addChildNode(ambientLightNode)
-         */
-        // retrieve the ship node
-        ship = scene.rootNode.childNode(withName: "basicHead_0", recursively: true)!
+        */
+        // retrieve the head node
+        head = scene.rootNode.childNode(withName: "basicHead_0", recursively: true)!
         
         // animate the 3d object
-        //ship.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 2, z: 0, duration: 1)))
+        //head.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 2, z: 0, duration: 1)))
         
         // retrieve the SCNView
-        let scnView = self as! SCNView
+        let scnView = self
         
         // set the scene to the view
         scnView.scene = scene
@@ -97,7 +95,7 @@ class headViewController: SCNView {
     
     func handleTap(_ gestureRecognize: UIGestureRecognizer) {
         // retrieve the SCNView
-        let scnView = self as! SCNView
+        let scnView = self
         
         // check what nodes are tapped
         let p = gestureRecognize.location(in: scnView)
@@ -132,10 +130,9 @@ class headViewController: SCNView {
     }
     
     func setPointerPosition(w: Double, x: Double, y: Double, z: Double) {
-       
-        ship.eulerAngles.x = Float(x)
-        ship.eulerAngles.y = Float(y)
-        ship.eulerAngles.z = Float(z)
+        head.eulerAngles.x = Float(x)
+        head.eulerAngles.y = Float(y)
+        head.eulerAngles.z = Float(z)
     }
 }
 
