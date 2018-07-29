@@ -30,7 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0C3D37560DD979815A53DF1B /* Pods_Starter_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Starter_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C3D37560DD979815A53DF1B /* Pods_Starter_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Starter_iOS.framework; path = "../../../../Users/lekshmi/Library/Developer/Xcode/DerivedData/StarterProject-ggkqzvsaxqzhsybwzdbelpqjamwj/Build/Products/Debug/Pods_Starter_iOS.framework"; sourceTree = DEVELOPER_DIR; };
 		2573A1969C83186B79E292E1 /* Pods-Starter-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Starter-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Starter-iOS/Pods-Starter-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		2C1A4E13D173813A39F97132 /* Pods-Starter-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Starter-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Starter-iOS/Pods-Starter-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		402973281DB81F5A00EC8C32 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
