@@ -10,64 +10,71 @@
 import AVFoundation
 import UIKit
 import MetaWear
-class HeadAndSoundController: UIViewController, SendXYZValues{
-    var dataRecieverView : DeviceViewController?
+
+protocol SendXYZAndDevice : class {
+    var device: MBLMetaWear! { get set }
+}
+
+class HeadAndSoundController: UIViewController {
+    
+    //var dataRecieverView : DeviceViewController?
+    var sendXYZDevice: SendXYZAndDevice? = nil
     
   
-    var val1 : Double = 0.0
-    var val2 : Double = 0.0
-    var val3 : Double = 0.0
     
-     let PI : Double = 3.14159265359
+    let PI : Double = 3.14159265359
     @IBOutlet weak var headView: headViewController!
     var playSoundController: PlaySoundsController!
-    func sendXYZHeadPosition(value1: Double, value2: Double, value3: Double){
-       
-        label1.text = String(value1)
-        label2.text = String(value2)
-        label3.text = String(value3)
-        val1 = value1
-        val2 = value2
-        val3 = value3
-        
-        headView.setPointerPosition(w: 0.0, x: val1, y: val2, z: val3)
-        
-        //
-        
- 
-    }
     
   
     @IBOutlet weak var label1: UILabel!
     @IBOutlet weak var label2: UILabel!
     @IBOutlet weak var label3: UILabel!
+    
     //var dataRecieverView : DeviceViewController
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //getSecondaryFusionValues()
-        dataRecieverView?.valuesDelegate = self
         //headView.setPointerPosition(w: 0.0, x: val1, y: val2, z: val3)
         
-        
-        
+        print("view will appear")
+        if (self.sendXYZDevice?.device) != nil {
+            print("Device ready.")
+        }
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        print("View did load")
+    }
+    
     @IBAction func startPresser(_ sender: AnyObject) {
-        /*
-        device.sensorFusion?.eulerAngle.startNotificationsAsync { (obj, error) in
+        
+        sendXYZDevice?.device?.sensorFusion?.eulerAngle.startNotificationsAsync { (obj, error) in
             self.getSecondaryFusionValues(obj: obj!)
             }.success { result in
                 print("Successfully subscribed")
             }.failure { error in
                 print("Error on subscribe: \(error)")
-        }*/
+        }
         loadSounds()
         
     }
     
-    
+    func getSecondaryFusionValues(obj : MBLEulerAngleData){
+        //headView.setPointerPosition(w: 0.0, x: val1, y: val2, z: val3)
+        let x = radians((obj.p * -1) + 90)
+        let y = radians(abs(365 - obj.y))
+        let z = radians(obj.r)
+        print(x)
+        print(y)
+        print(z)
+        headView.setPointerPosition(w: 0.0, x: x, y: y, z: z)
+        playSoundController.updateAngularOrientation(Float(obj.h), Float(obj.p), Float(obj.r))
+    }
     
      //@IBOutlet weak var deviceStatusLabel: UILabel!
-    var device: MBLMetaWear!
+    
     //var timer : Timer?
     //var startTime : TimeInterval?
     
@@ -156,6 +163,7 @@ class HeadAndSoundController: UIViewController, SendXYZValues{
         var soundArray : [String] = []
         for index in 0...3{
             soundArray.append(String(index) + ".wav")
+            
         }
         playSoundController = PlaySoundsController(file: soundArray)
         

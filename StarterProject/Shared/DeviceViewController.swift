@@ -10,10 +10,8 @@ import UIKit
 import MetaWear
 import AVFoundation
 import MapKit
-protocol SendXYZValues : class {
-    func sendXYZHeadPosition(value1: Double, value2: Double, value3: Double)
-}
-class DeviceViewController: UIViewController, UISearchBarDelegate{
+
+class DeviceViewController: UIViewController, UISearchBarDelegate, SendXYZAndDevice {
     /**
     var transportX : Double = 0.0
     var transportY : Double = 0.0
@@ -23,7 +21,7 @@ class DeviceViewController: UIViewController, UISearchBarDelegate{
         
     }*/
     
-    weak var valuesDelegate : SendXYZValues?
+    weak var valuesDelegate : SendXYZAndDevice?
     
     @IBOutlet weak var deviceStatus: UILabel!
     @IBOutlet weak var nextButton: UIButton!
@@ -50,11 +48,11 @@ class DeviceViewController: UIViewController, UISearchBarDelegate{
             self.device.led?.flashColorAsync(UIColor.green, withIntensity: 1.0, numberOfFlashes: 3)
             NSLog("We are connected")
         }
-       
+       /**
         var sensorTimer = Timer()
          let aSelector : Selector = #selector(self.getDataFromSensor)
         sensorTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: aSelector,     userInfo: nil, repeats: false)
-        
+        */
         //loadSounds()
         //loadSounds()
        
@@ -63,10 +61,10 @@ class DeviceViewController: UIViewController, UISearchBarDelegate{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let headAndSoundController = segue.destination as? HeadAndSoundController {
             print("Preparing for HeadAndSoundController")
-            valuesDelegate = headAndSoundController
+            headAndSoundController.sendXYZDevice = self
         }
     }
-    
+    /*
     func getDataFromSensor(){
         device.sensorFusion?.eulerAngle.startNotificationsAsync { (obj, error) in
             self.getFusionValues(obj: obj!)
@@ -75,7 +73,7 @@ class DeviceViewController: UIViewController, UISearchBarDelegate{
             }.failure { error in
                 print("Error on subscribe: \(error)")
         }
-    }
+    }*/
     @IBAction func search(_ sender: UIBarButtonItem) {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchBar.delegate = self
@@ -159,7 +157,7 @@ class DeviceViewController: UIViewController, UISearchBarDelegate{
         }
     }
     
-    
+    /**
     func getFusionValues(obj: MBLEulerAngleData){
         
         let xS =  String(format: "%.02f", (obj.p))
@@ -169,17 +167,17 @@ class DeviceViewController: UIViewController, UISearchBarDelegate{
         let x = radians((obj.p * -1) + 90)
         let y = radians(abs(365 - obj.y))
         let z = radians(obj.r)
-        
+        let theAngularOrientation = abs(Float(365 - obj.y))
         //headView.setPointerPosition(w: 0.0, x : x, y: y, z: z)
         //playSoundsController.updateAngularOrientation(abs(Float(365 - obj.y)))
         //print(x)
        // print(y)
        // print(z)
-        self.valuesDelegate?.sendXYZHeadPosition(value1: x, value2: y, value3: z)
+            self.valuesDelegate?.sendXYZHeadPosition(value1: x, value2: y, value3: z, value4: theAngularOrientation)
         
         // Send OSC here
     }
-    
+    */
     func radians(_ degree: Double) -> Double {
         return ( PI/180 * degree)
     }
